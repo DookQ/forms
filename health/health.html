@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ฟอร์มแบบสอบถามสุขภาพ</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 30px auto;
+    }
+    .form-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .form-group label {
+        width: 150px; /* ความกว้าง label คงที่ */
+        margin-right: 10px;
+    }
+    .form-group input,
+    .form-group textarea {
+        flex: 1;
+        padding: 5px;
+    }
+    .form-group .radio-group {
+        display: flex;
+        gap: 20px;
+    }
+    .error {
+        flex-basis: 100%;
+        margin-left: 160px; /* ให้ตรงกับ input */
+        color: red;
+        font-size: 0.9em;
+    }
+</style>
+</head>
+<body>
+
+<h2>ฟอร์มแบบสอบถามสุขภาพ</h2>
+<form id="healthForm">
+    <div class="form-group">
+        <label for="age">อายุ</label>
+        <input type="number" id="age">
+    </div>
+    <div class="error" id="ageError"></div>
+
+    <div class="form-group">
+        <label>เพศ</label>
+        <div class="radio-group">
+            <label><input type="radio" name="gender" value="ชาย"> ชาย</label>
+            <label><input type="radio" name="gender" value="หญิง"> หญิง</label>
+        </div>
+    </div>
+    <div class="error" id="genderError"></div>
+
+    <div class="form-group">
+        <label for="weight">น้ำหนัก (กก.)</label>
+        <input type="number" id="weight">
+    </div>
+    <div class="error" id="weightError"></div>
+
+    <div class="form-group">
+        <label for="height">ส่วนสูง (ซม.)</label>
+        <input type="number" id="height">
+    </div>
+    <div class="error" id="heightError"></div>
+
+    <div class="form-group">
+        <label>มีโรคประจำตัว</label>
+        <input type="checkbox" id="hasDisease"> 
+    </div>
+
+    <div id="diseaseDetailBox" style="display:none;">
+        <div class="form-group">
+            <label for="diseaseDetail">รายละเอียด</label>
+            <textarea id="diseaseDetail"></textarea>
+        </div>
+        <div class="error" id="diseaseDetailError"></div>
+    </div>
+
+    <div class="form-group">
+        <label></label>
+        <button type="submit">ส่งข้อมูล</button>
+    </div>
+</form>
+
+<!-- Modal -->
+<div class="modal" id="resultModal">
+    <div class="modal-content">
+        <p id="modalMessage"></p>
+        <button onclick="closeModal()">ปิด</button>
+    </div>
+</div>
+
+<script src="health-survey.js"></script>
+</body>
+</html>
